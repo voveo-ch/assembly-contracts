@@ -15,16 +15,16 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"tokenErc20\",\"outputs\":[{\"internalType\":\"contract TokenErc20\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/D/Development/github/truffle/contracts/VotingIfc.sol\":\"VotingIfc\"},\"evmVersion\":\"istanbul\",\"libraries\":{\"LibAssembly\":\"0x8790a9166e24ea0212f69843af1cc139c8cf7849\",\"LibVoting\":\"0xb32e98b87e03ecd81c47180a0051d9eb6609f060\",\"libsign\":\"0x34349d057d2a42056f11eaaf8cb6890f0b71e512\"},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/D/Development/github/truffle/contracts/TokenErc20Ifc.sol\":{\"keccak256\":\"0x4044ec34268a846a063eff628eff1859d8b8943c55342dca05015d96b80717bf\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://bf39ebd6a532e87fa22bc49c313438d9be9f8e31db69faf86526761be11d579d\",\"dweb:/ipfs/Qmf8jawjcEe2b6gX8G8s8pbzYDCdwydv3ppXJ3o4C9nx7T\"]},\"/D/Development/github/truffle/contracts/VotingIfc.sol\":{\"keccak256\":\"0x04d02dcd74d3755acf7e190e0850d0dbf787b06fcd32118d3ca596b45c6aab52\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://14c912835b57dac35a0d79b6a300d2f4362f59136424aaa30cbb1f89e0f43902\",\"dweb:/ipfs/Qmc4MqtriqTh19oUV8VkJ83q25SnWNSrMhQwaMBpjzh6xq\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"tokenErc20\",\"outputs\":[{\"internalType\":\"contract TokenErc20\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/D/Development/github/assembly-contracts/contracts/VotingIfc.sol\":\"VotingIfc\"},\"evmVersion\":\"istanbul\",\"libraries\":{\"LibAssembly\":\"0x8790a9166e24ea0212f69843af1cc139c8cf7849\",\"LibVoting\":\"0xb32e98b87e03ecd81c47180a0051d9eb6609f060\",\"libsign\":\"0x34349d057d2a42056f11eaaf8cb6890f0b71e512\"},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/D/Development/github/assembly-contracts/contracts/TokenErc20Ifc.sol\":{\"keccak256\":\"0x4044ec34268a846a063eff628eff1859d8b8943c55342dca05015d96b80717bf\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://bf39ebd6a532e87fa22bc49c313438d9be9f8e31db69faf86526761be11d579d\",\"dweb:/ipfs/Qmf8jawjcEe2b6gX8G8s8pbzYDCdwydv3ppXJ3o4C9nx7T\"]},\"/D/Development/github/assembly-contracts/contracts/VotingIfc.sol\":{\"keccak256\":\"0x04d02dcd74d3755acf7e190e0850d0dbf787b06fcd32118d3ca596b45c6aab52\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://14c912835b57dac35a0d79b6a300d2f4362f59136424aaa30cbb1f89e0f43902\",\"dweb:/ipfs/Qmc4MqtriqTh19oUV8VkJ83q25SnWNSrMhQwaMBpjzh6xq\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: MIT\r\n\r\npragma solidity >=0.0;\r\n\r\nimport \"./TokenErc20Ifc.sol\";\r\n\r\ninterface VotingIfc {\r\n    function tokenErc20() external view returns(TokenErc20);\r\n}\r\n",
-  "sourcePath": "D:\\Development\\github\\truffle\\contracts\\VotingIfc.sol",
+  "sourcePath": "D:\\Development\\github\\assembly-contracts\\contracts\\VotingIfc.sol",
   "ast": {
-    "absolutePath": "/D/Development/github/truffle/contracts/VotingIfc.sol",
+    "absolutePath": "/D/Development/github/assembly-contracts/contracts/VotingIfc.sol",
     "exportedSymbols": {
       "VotingIfc": [
         1575
@@ -45,7 +45,7 @@
         "src": "35:22:7"
       },
       {
-        "absolutePath": "/D/Development/github/truffle/contracts/TokenErc20Ifc.sol",
+        "absolutePath": "/D/Development/github/assembly-contracts/contracts/TokenErc20Ifc.sol",
         "file": "./TokenErc20Ifc.sol",
         "id": 1569,
         "nodeType": "ImportDirective",
@@ -137,7 +137,7 @@
     "src": "35:147:7"
   },
   "legacyAST": {
-    "absolutePath": "/D/Development/github/truffle/contracts/VotingIfc.sol",
+    "absolutePath": "/D/Development/github/assembly-contracts/contracts/VotingIfc.sol",
     "exportedSymbols": {
       "VotingIfc": [
         1575
@@ -158,7 +158,7 @@
         "src": "35:22:7"
       },
       {
-        "absolutePath": "/D/Development/github/truffle/contracts/TokenErc20Ifc.sol",
+        "absolutePath": "/D/Development/github/assembly-contracts/contracts/TokenErc20Ifc.sol",
         "file": "./TokenErc20Ifc.sol",
         "id": 1569,
         "nodeType": "ImportDirective",
@@ -255,7 +255,7 @@
   },
   "networks": {},
   "schemaVersion": "3.3.2",
-  "updatedAt": "2021-01-07T13:01:32.896Z",
+  "updatedAt": "2021-01-07T13:20:38.302Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
