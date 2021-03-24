@@ -40,6 +40,8 @@ contract Voting is VotingIfc, owned, signed {
         bytes32 s
     )
         public
+        restrict
+        issigned(abi.encode(starttime, endtime, address(this)), v, r, s)
     {
         data.setVotingTime(starttime, endtime);
     }
