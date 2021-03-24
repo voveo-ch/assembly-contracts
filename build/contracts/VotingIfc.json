@@ -15,16 +15,16 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"tokenErc20\",\"outputs\":[{\"internalType\":\"contract TokenErc20\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/D/Development/github/assembly-contracts/contracts/VotingIfc.sol\":\"VotingIfc\"},\"evmVersion\":\"istanbul\",\"libraries\":{\"LibAssembly\":\"0x8790a9166e24ea0212f69843af1cc139c8cf7849\",\"LibVoting\":\"0xb32e98b87e03ecd81c47180a0051d9eb6609f060\",\"libsign\":\"0x34349d057d2a42056f11eaaf8cb6890f0b71e512\"},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/D/Development/github/assembly-contracts/contracts/TokenErc20Ifc.sol\":{\"keccak256\":\"0x4044ec34268a846a063eff628eff1859d8b8943c55342dca05015d96b80717bf\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://bf39ebd6a532e87fa22bc49c313438d9be9f8e31db69faf86526761be11d579d\",\"dweb:/ipfs/Qmf8jawjcEe2b6gX8G8s8pbzYDCdwydv3ppXJ3o4C9nx7T\"]},\"/D/Development/github/assembly-contracts/contracts/VotingIfc.sol\":{\"keccak256\":\"0x04d02dcd74d3755acf7e190e0850d0dbf787b06fcd32118d3ca596b45c6aab52\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://14c912835b57dac35a0d79b6a300d2f4362f59136424aaa30cbb1f89e0f43902\",\"dweb:/ipfs/Qmc4MqtriqTh19oUV8VkJ83q25SnWNSrMhQwaMBpjzh6xq\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"tokenErc20\",\"outputs\":[{\"internalType\":\"contract TokenErc20\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/D/dev/github/assembly-contracts/contracts/VotingIfc.sol\":\"VotingIfc\"},\"evmVersion\":\"istanbul\",\"libraries\":{\"LibAssembly\":\"0x8790a9166e24ea0212f69843af1cc139c8cf7849\",\"LibVoting\":\"0xb32e98b87e03ecd81c47180a0051d9eb6609f060\",\"libsign\":\"0x34349d057d2a42056f11eaaf8cb6890f0b71e512\"},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/D/dev/github/assembly-contracts/contracts/TokenErc20Ifc.sol\":{\"keccak256\":\"0x8abeebd0ea0502f9fcf20e0eda320437b400820c4f88a55dd0ae3a89b49ca8f7\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4c594e74f55523b74ad3530af8274d7066d46d1f06b0c5a4a175a453510bc4d1\",\"dweb:/ipfs/QmTWgCJDia4xJN56dtrqM39AGhtxpNgcu4kWKAeLzxpKFZ\"]},\"/D/dev/github/assembly-contracts/contracts/VotingIfc.sol\":{\"keccak256\":\"0x69b703af4788933ecf59fa3ba0a8bbcaef8fea6a1705365642536360e2602801\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://43b14b255cfe3c04fe9dc0651bc26c2bef4f8fe5679c3dbc19d45def18e842f9\",\"dweb:/ipfs/QmZoZ6JTQyfXjvzvfTrn7SPBVERhoS8rF1NjKbG2KGUt8d\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "// SPDX-License-Identifier: MIT\r\n\r\npragma solidity >=0.0;\r\n\r\nimport \"./TokenErc20Ifc.sol\";\r\n\r\ninterface VotingIfc {\r\n    function tokenErc20() external view returns(TokenErc20);\r\n}\r\n",
-  "sourcePath": "D:\\Development\\github\\assembly-contracts\\contracts\\VotingIfc.sol",
+  "source": "// SPDX-License-Identifier: MIT\r\n\r\npragma solidity ^0.6.12;\r\n\r\nimport \"./TokenErc20Ifc.sol\";\r\n\r\ninterface VotingIfc {\r\n    function tokenErc20() external view returns(TokenErc20);\r\n}\r\n",
+  "sourcePath": "D:\\dev\\github\\assembly-contracts\\contracts\\VotingIfc.sol",
   "ast": {
-    "absolutePath": "/D/Development/github/assembly-contracts/contracts/VotingIfc.sol",
+    "absolutePath": "/D/dev/github/assembly-contracts/contracts/VotingIfc.sol",
     "exportedSymbols": {
       "VotingIfc": [
         1575
@@ -38,20 +38,21 @@
         "id": 1568,
         "literals": [
           "solidity",
-          ">=",
-          "0.0"
+          "^",
+          "0.6",
+          ".12"
         ],
         "nodeType": "PragmaDirective",
-        "src": "35:22:7"
+        "src": "35:24:7"
       },
       {
-        "absolutePath": "/D/Development/github/assembly-contracts/contracts/TokenErc20Ifc.sol",
+        "absolutePath": "/D/dev/github/assembly-contracts/contracts/TokenErc20Ifc.sol",
         "file": "./TokenErc20Ifc.sol",
         "id": 1569,
         "nodeType": "ImportDirective",
         "scope": 1576,
         "sourceUnit": 1193,
-        "src": "61:29:7",
+        "src": "63:29:7",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -84,7 +85,7 @@
               "id": 1570,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "140:2:7"
+              "src": "142:2:7"
             },
             "returnParameters": {
               "id": 1573,
@@ -98,7 +99,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 1574,
-                  "src": "165:10:7",
+                  "src": "167:10:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -111,7 +112,7 @@
                     "name": "TokenErc20",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 1192,
-                    "src": "165:10:7",
+                    "src": "167:10:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_contract$_TokenErc20_$1192",
                       "typeString": "contract TokenErc20"
@@ -121,23 +122,23 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "164:12:7"
+              "src": "166:12:7"
             },
             "scope": 1575,
-            "src": "121:56:7",
+            "src": "123:56:7",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
         "scope": 1576,
-        "src": "94:86:7"
+        "src": "96:86:7"
       }
     ],
-    "src": "35:147:7"
+    "src": "35:149:7"
   },
   "legacyAST": {
-    "absolutePath": "/D/Development/github/assembly-contracts/contracts/VotingIfc.sol",
+    "absolutePath": "/D/dev/github/assembly-contracts/contracts/VotingIfc.sol",
     "exportedSymbols": {
       "VotingIfc": [
         1575
@@ -151,20 +152,21 @@
         "id": 1568,
         "literals": [
           "solidity",
-          ">=",
-          "0.0"
+          "^",
+          "0.6",
+          ".12"
         ],
         "nodeType": "PragmaDirective",
-        "src": "35:22:7"
+        "src": "35:24:7"
       },
       {
-        "absolutePath": "/D/Development/github/assembly-contracts/contracts/TokenErc20Ifc.sol",
+        "absolutePath": "/D/dev/github/assembly-contracts/contracts/TokenErc20Ifc.sol",
         "file": "./TokenErc20Ifc.sol",
         "id": 1569,
         "nodeType": "ImportDirective",
         "scope": 1576,
         "sourceUnit": 1193,
-        "src": "61:29:7",
+        "src": "63:29:7",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -197,7 +199,7 @@
               "id": 1570,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "140:2:7"
+              "src": "142:2:7"
             },
             "returnParameters": {
               "id": 1573,
@@ -211,7 +213,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 1574,
-                  "src": "165:10:7",
+                  "src": "167:10:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -224,7 +226,7 @@
                     "name": "TokenErc20",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 1192,
-                    "src": "165:10:7",
+                    "src": "167:10:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_contract$_TokenErc20_$1192",
                       "typeString": "contract TokenErc20"
@@ -234,20 +236,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "164:12:7"
+              "src": "166:12:7"
             },
             "scope": 1575,
-            "src": "121:56:7",
+            "src": "123:56:7",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
         "scope": 1576,
-        "src": "94:86:7"
+        "src": "96:86:7"
       }
     ],
-    "src": "35:147:7"
+    "src": "35:149:7"
   },
   "compiler": {
     "name": "solc",
@@ -255,7 +257,7 @@
   },
   "networks": {},
   "schemaVersion": "3.3.2",
-  "updatedAt": "2021-01-07T13:20:38.302Z",
+  "updatedAt": "2021-03-24T14:15:06.897Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

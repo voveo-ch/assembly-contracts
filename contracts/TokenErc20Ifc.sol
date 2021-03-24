@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity >=0.0;
+pragma solidity ^0.6.12;
 
 interface TokenErc20 {
     function name() external view returns (string memory);

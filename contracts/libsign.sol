@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity >=0.0;
+pragma solidity ^0.6.12;
 
 library libsign {
     // verify sender of a signed message
