@@ -1,2 +1,3 @@
-# assembly-contracts
-Smart contracts for running assemblies on Voveo
+# Smart contracts for Voveo assemblies
+
+These are the solidity contracts for assemblies and voting of [Voveo](https://voveo.ch).
