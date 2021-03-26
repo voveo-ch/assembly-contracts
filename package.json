@@ -29,7 +29,8 @@
     "build": "npm run clean && npx truffle compile --config truffle-config.js",
     "test": "npm run build && npx truffle test --config truffle-config.js ./test/test.js",
     "ganache": "npx ganache-cli -l 10000000 -d 'torch almost feed brother seat earth scorpion panther nuclear interest toy guide'",
-    "migrate-goerli": "SECRET_FILE='.secret.goerli' && npx truffle migrate --reset --network goerli",
-    "migrate-local": "SECRET_FILE='.secret.ganache' && npx truffle migrate --reset --network development"
+    "migrate-goerli": "npx truffle migrate --reset --network goerli",
+    "migrate-teams": "npx truffle migrate --reset --network teams",
+    "migrate-local": "npx truffle migrate --reset --network development"
   }
 }

@@ -1,4 +1,5 @@
 # assembly-contracts
+
 Smart contracts for running assemblies on Voveo
 
 ## Installation
@@ -21,4 +22,14 @@ Smart contracts for running assemblies on Voveo
 
 `npm run migrate-local`
 
+### Deploy contract to Goerli
 
+Check if the private key specified in the file `.secret.goerli` is valid and has enough ETH to pay tx fee
+
+`npm run migrate-goerli`
+
+### Deploy contract to Teams
+
+Check if the private key specified in the file `.secret.teams` is valid and has enough ETH to pay tx fee
+
+`npm run migrate-teams`

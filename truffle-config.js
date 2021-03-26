@@ -18,112 +18,127 @@
  *
  */
 
- const HDWalletProvider = require("@truffle/hdwallet-provider");
- const infuraKey = "v3/1c60b584fddc49deb2efaa247257cdd2";
- 
- const fs = require("fs");
- //const mnemonic = fs.readFileSync(".secret").toString().trim();
- const mnemonic = "";
- const privatekey = fs.readFileSync(process.env.SECRET_FILE || ".secret.ganache").toString();
- const teamsMnemonic = "favorite split royal cover bus spray pitch alley grocery fantasy firm liberty";
- 
- module.exports = {
-   plugins: ["truffle-security"],
- 
-   contracts_directory: "contracts",
- 
-   /**
-    * Networks define how you connect to your ethereum client and let you set the
-    * defaults web3 uses to send transactions. If you don't specify one truffle
-    * will spin up a development blockchain for you on port 9545 when you
-    * run `develop` or `test`. You can ask a truffle command to use a specific
-    * network from the command line, e.g
-    *
-    * $ truffle test --network <network-name>
-    */
- 
-   networks: {
-     // Useful for testing. The `development` name is special - truffle uses it by default
-     // if it's defined here and no other network is specified at the command line.
-     // You should run a client (like ganache-cli, geth or parity) in a separate terminal
-     // tab if you use this network and you must also set the `host`, `port` and `network_id`
-     // options below to some value.
-     //
-     // Another network with more advanced options...
-     // advanced: {
-     // port: 8777,             // Custom port
-     // network_id: 1342,       // Custom network
-     // gas: 8500000,           // Gas sent with each transaction (default: ~6700000)
-     // gasPrice: 20000000000,  // 20 gwei (in wei) (default: 100 gwei)
-     // from: <address>,        // Account to send txs from (default: accounts[0])
-     // websockets: true        // Enable EventEmitter interface for web3 (default: false)
-     // },
-     // Useful for deploying to a public network.
-     // NB: It's important to wrap the provider as a function.
-     ropsten: {
-       provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/${infuraKey}`),
-       network_id: 3, // Ropsten's id
-       gas: 5500000, // Ropsten has a lower block limit than mainnet
-       confirmations: 2, // # of confs to wait between deployments. (default: 0)
-       timeoutBlocks: 200, // # of blocks before a deployment times out  (minimum/default: 50)
-       skipDryRun: true, // Skip dry run before migrations? (default: false for public nets )
-     },
-     goerli: {
-       provider: () => new HDWalletProvider(privatekey, `https://goerli.infura.io/v3/62db62ec8ca146d29038a146ee09ae0e`),
-       network_id: 5,
-       gas: 5500000,
-       confirmations: 2,
-       timeoutBlocks: 200,
-       skipDryRun: true,
-     },
-     // Useful for private networks
-     // private: {
-     // provider: () => new HDWalletProvider(mnemonic, `https://network.io`),
-     // network_id: 2111,   // This network is yours, in the cloud.
-     // production: true    // Treats this network as if it was a public net. (default: false)
-     // }
-     development: {
-       host: "127.0.0.1",
-       port: 8545,
-       network_id: "*",
-     },
-     test: {
-       host: "127.0.0.1",
-       port: 8546,
-       network_id: "*",
-     },
-     teams: {
-       provider: function () {
-         return new HDWalletProvider(teamsMnemonic, "https://sandbox.truffleteams.com/01b581c6-0ffe-46ce-9dc7-d4d76823077b", 0, 10, false);
-       },
-       network_id: 1605810390116,
-     },
-   },
- 
-   // Set default mocha options here, use special reporters etc.
-   mocha: {
-     // timeout: 100000
-   },
- 
-   // Configure your compilers
-   compilers: {
-     solc: {
-       version: "0.6.12",
-       parser: "solcjs",
-       // version: "0.5.1",    // Fetch exact version from solc-bin (default: truffle's version)
-       // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
-       /*
+const HDWalletProvider = require("@truffle/hdwallet-provider");
+
+const fs = require("fs");
+const path = require("path");
+
+module.exports = {
+  plugins: ["truffle-security"],
+
+  contracts_directory: "contracts",
+
+  /**
+   * Networks define how you connect to your ethereum client and let you set the
+   * defaults web3 uses to send transactions. If you don't specify one truffle
+   * will spin up a development blockchain for you on port 9545 when you
+   * run `develop` or `test`. You can ask a truffle command to use a specific
+   * network from the command line, e.g
+   *
+   * $ truffle test --network <network-name>
+   */
+
+  networks: {
+    // Useful for testing. The `development` name is special - truffle uses it by default
+    // if it's defined here and no other network is specified at the command line.
+    // You should run a client (like ganache-cli, geth or parity) in a separate terminal
+    // tab if you use this network and you must also set the `host`, `port` and `network_id`
+    // options below to some value.
+    //
+    // Another network with more advanced options...
+    // advanced: {
+    // port: 8777,             // Custom port
+    // network_id: 1342,       // Custom network
+    // gas: 8500000,           // Gas sent with each transaction (default: ~6700000)
+    // gasPrice: 20000000000,  // 20 gwei (in wei) (default: 100 gwei)
+    // from: <address>,        // Account to send txs from (default: accounts[0])
+    // websockets: true        // Enable EventEmitter interface for web3 (default: false)
+    // },
+    // Useful for deploying to a public network.
+    // NB: It's important to wrap the provider as a function.
+    development: {
+      host: "127.0.0.1",
+      port: 8545,
+      network_id: "*",
+    },
+    goerli: {
+      provider: () => {
+        const privatekey = fs
+          .readFileSync(`${path.dirname(__filename)}/.secret.goerli`)
+          .toString();
+        return new HDWalletProvider(
+          privatekey,
+          `https://goerli.infura.io/v3/62db62ec8ca146d29038a146ee09ae0e`
+        );
+      },
+      network_id: 5,
+      gas: 5500000,
+      confirmations: 2,
+      timeoutBlocks: 200,
+      skipDryRun: true,
+    },
+    // Useful for private networks
+    // private: {
+    // provider: () => new HDWalletProvider(mnemonic, `https://network.io`),
+    // network_id: 2111,   // This network is yours, in the cloud.
+    // production: true    // Treats this network as if it was a public net. (default: false)
+    // }
+
+    // teams: {
+    //   provider: function () {
+    //     return new HDWalletProvider(
+    //       teamsMnemonic,
+    //       "https://sandbox.truffleteams.com/01b581c6-0ffe-46ce-9dc7-d4d76823077b",
+    //       0,
+    //       10,
+    //       false
+    //     );
+    //   },
+    //   network_id: 1605810390116,
+    // },
+
+    teams: {
+      provider: () => {
+        const privatekey = fs
+          .readFileSync(`${path.dirname(__filename)}/.secret.teams`)
+          .toString();
+        return new HDWalletProvider(
+          privatekey,
+          "https://sandbox.truffleteams.com/01b581c6-0ffe-46ce-9dc7-d4d76823077b"
+        );
+      },
+      network_id: 1605810390116,
+      gas: 5500000,
+      confirmations: 2,
+      timeoutBlocks: 200,
+      skipDryRun: true,
+    },
+  },
+
+  // Set default mocha options here, use special reporters etc.
+  mocha: {
+    // timeout: 100000
+  },
+
+  // Configure your compilers
+  compilers: {
+    solc: {
+      version: "0.6.12",
+      parser: "solcjs",
+      // version: "0.5.1",    // Fetch exact version from solc-bin (default: truffle's version)
+      // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
+      /*
        outputSelection: {
          "*": {
            "*": ["metadata", "abi", "evm.bytecode", "evm.bytecode.linkReferences", "evm.gasEstimates"]
          }
        },
        */
-       settings: {
-         optimizer: {
-           enabled: true,
-           runs: 200
-         },
+      settings: {
+        optimizer: {
+          enabled: true,
+          runs: 200,
+        },
         //  libraries: {
         //    "contracts/Assembly.sol": {
         //      LibAssembly: "0x25E771988BCf8F773d2846C08EAE99865D3f1aed",
@@ -164,8 +179,7 @@
         //      // goerli: "0xc422a2cE13f5Bc04Ca2F36af4Fe12a63232E6e31",
         //    },
         //  },
-       },
-     },
-   },
- };
- 
+      },
+    },
+  },
+};
