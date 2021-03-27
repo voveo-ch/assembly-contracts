@@ -44,3 +44,15 @@ The flattened contracts are stored in folder `contracts-flatten`
 - Flatten Voting: `npm run flatten-voting`
 - Flatten Shares: `npm run flatten-shares`
 - Flatten all contracts: `npm run flatten-all`
+
+## Generate UML Class Diagram
+
+Please install the tool `sol2uml` (https://www.npmjs.com/package/sol2uml) globally:
+
+`npm link sol2uml --only=production`
+
+To generate diagram, run this cmd:
+
+`sol2uml ./contracts -o ./uml-diagrams/Assembly.svg`
+
+The generated diagram SVG file is stored in folder `uml-diagrams`
