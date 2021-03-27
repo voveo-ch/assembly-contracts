@@ -9,7 +9,7 @@
     "dotenv": "^6.0.0",
     "eslint": "3.8.1",
     "ganache-cli": "^6.12.2",
-    "truffle-flattener": "^1.4.2",
+    "truffle-flattener": "^1.5.0",
     "truffle-solidity-loader": "^0.1.6"
   },
   "dependencies": {
@@ -31,6 +31,10 @@
     "ganache": "npx ganache-cli -l 10000000 -d 'torch almost feed brother seat earth scorpion panther nuclear interest toy guide'",
     "migrate-goerli": "npx truffle migrate --reset --network goerli",
     "migrate-teams": "npx truffle migrate --reset --network teams",
-    "migrate-local": "npx truffle migrate --reset --network development"
+    "migrate-local": "npx truffle migrate --reset --network development",
+    "flatten-assembly": "npx truffle-flattener contracts/Assembly.sol > contracts-flatten/AssemblyFlatten.sol",
+    "flatten-voting": "npx truffle-flattener contracts/Voting.sol > contracts-flatten/VotingFlatten.sol",
+    "flatten-shares": "npx truffle-flattener contracts/Shares.sol > contracts-flatten/SharesFlatten.sol",
+    "flatten-all": "npm run flatten-assembly && npm run flatten-voting && npm run flatten-shares"
   }
 }
