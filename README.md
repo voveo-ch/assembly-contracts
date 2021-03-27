@@ -56,3 +56,13 @@ To generate diagram, run this cmd:
 `sol2uml ./contracts -o ./uml-diagrams/Assembly.svg`
 
 The generated diagram SVG file is stored in folder `uml-diagrams`
+
+## Unit-Test
+
+At first, start local Ganache with this cmd
+
+`npm run ganache`
+
+Then, open another terminal/console to run the test with this cmd
+
+`npm run test`
