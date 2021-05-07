@@ -24,7 +24,8 @@
     "web3": "1.2.8"
   },
   "scripts": {
-    "clean": "rm -rf ./build",
+    "clean-linux": "rm -rf ./build",
+    "clean": "if exist build rmdir /q /s build",
     "build": "npm run clean && npx truffle compile --config truffle-config.js",
     "test-assembly": "npm run build && npx truffle test --config truffle-config.js ./test/AssemblyTest.js",
     "test": "npm run build && npx truffle test --config truffle-config.js ./test/test.js",
