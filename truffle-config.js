@@ -154,19 +154,13 @@ module.exports = {
         //    },
         //    "contracts/LibAssembly.sol": {
         //      libsign: "0x8E9AFDC0AE930873Acad7DC2C704d3771E68f692",
-        //      // simons local ganache:"0xD86C8F0327494034F60e25074420BcCF560D5610",
+        //      // simons local ganache:"0xD86C8F0327494034F60e25074420BcCF560D5610", -------Done
         //      // teams: "0x8E9AFDC0AE930873Acad7DC2C704d3771E68f692",
         //      // goerli: "0xc422a2cE13f5Bc04Ca2F36af4Fe12a63232E6e31",
         //    },
         //    "contracts/signed.sol": {
         //      libsign: "0x8E9AFDC0AE930873Acad7DC2C704d3771E68f692",
         //      // simons local ganache:"0xD86C8F0327494034F60e25074420BcCF560D5610",
-        //      // teams: "0x8E9AFDC0AE930873Acad7DC2C704d3771E68f692",
-        //      // goerli: "0xc422a2cE13f5Bc04Ca2F36af4Fe12a63232E6e31",
-        //    },
-        //    "contracts/LibVoting.sol": {
-        //      libsign: "0x8E9AFDC0AE930873Acad7DC2C704d3771E68f692",
-        //      // simons local ganache: "0xD86C8F0327494034F60e25074420BcCF560D5610",
         //      // teams: "0x8E9AFDC0AE930873Acad7DC2C704d3771E68f692",
         //      // goerli: "0xc422a2cE13f5Bc04Ca2F36af4Fe12a63232E6e31",
         //    },

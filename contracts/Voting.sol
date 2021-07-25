@@ -2,13 +2,13 @@
 
 pragma solidity ^0.6.12;
 
-import "./owned.sol";
-import "./signed.sol";
-import "./TokenErc20Ifc.sol";
-import "./VotingIfc.sol";
-import "./LibVoting.sol";
+import "./Owned.sol";
+import "./Signed.sol";
+import "./interfaces/ITokenERC20.sol";
+import "./interfaces/IVoting.sol";
+import "./libraries/LibVoting.sol";
 
-contract Voting is VotingIfc, owned, signed {
+contract Voting is IVoting, Owned, Signed {
     using LibVoting for LibVoting.Data;
     LibVoting.Data private data;
 
@@ -26,9 +26,9 @@ contract Voting is VotingIfc, owned, signed {
     constructor(
         string memory title,
         string memory proposal,
-        TokenErc20 token,
+        ITokenERC20 token,
         address _signatory
-    ) public signed(_signatory) {
+    ) public Signed(_signatory) {
         data.construct(title, proposal, token);
     }
 
@@ -38,11 +38,7 @@ contract Voting is VotingIfc, owned, signed {
         uint8 v,
         bytes32 r,
         bytes32 s
-    )
-        public
-        restrict
-        issigned(abi.encode(starttime, endtime, address(this)), v, r, s)
-    {
+    ) public restrict isSigned(abi.encode(starttime, endtime, address(this)), v, r, s) {
         data.setVotingTime(starttime, endtime);
     }
 
@@ -82,7 +78,7 @@ contract Voting is VotingIfc, owned, signed {
         return data.standDown;
     }
 
-    function tokenErc20() public override view returns (TokenErc20) {
+    function tokenErc20() public view override returns (ITokenERC20) {
         return data.tokenErc20;
     }
 

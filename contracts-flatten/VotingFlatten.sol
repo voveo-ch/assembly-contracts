@@ -6,25 +6,27 @@ pragma solidity ^0.6.12;
 
 contract owned {
     address payable internal owner;
-    event feePaid(address to, uint amount);
+    event feePaid(address to, uint256 amount);
+
     // creator is owner
     constructor() public {
         owner = msg.sender;
     }
+
     // only owner is allowed to call restricted function
     modifier restrict {
-        require(msg.sender==owner, "access denied, you are not the contract owner");
+        require(msg.sender == owner, "access denied, you are not the contract owner");
         _;
     }
     // requires a fee for the owner
-    modifier fee(uint amount) {
-        require(msg.value>=amount, "not enough payment for the fee");
+    modifier fee(uint256 amount) {
+        require(msg.value >= amount, "not enough payment for the fee");
         _;
         owner.transfer(amount);
         emit feePaid(owner, amount);
     }
 
-    function getOwner() view public returns (address payable) {
+    function getOwner() public view returns (address payable) {
         return owner;
     }
 
@@ -37,7 +39,6 @@ contract owned {
     function withdraw() public restrict {
         owner.transfer(address(this).balance);
     }
-
 }
 
 // File: contracts/libsign.sol
@@ -56,10 +57,7 @@ library libsign {
     ) public pure returns (address sender) {
         require(secret.length > 0, "not a valid secret");
         sender = ecrecover(keccak256(secret), v, r, s);
-        require(
-            sender != address(0x0),
-            "identification failed due to invalid signature"
-        );
+        require(sender != address(0x0), "identification failed due to invalid signature");
     }
 }
 
@@ -69,12 +67,11 @@ library libsign {
 
 pragma solidity ^0.6.12;
 
-
 contract signed {
     address public signatory;
 
     // signatory has signed message
-    modifier issigned(
+    modifier isSigned(
         bytes memory secret,
         uint8 v,
         bytes32 r,
@@ -105,10 +102,7 @@ contract signed {
         bytes32 s
     ) internal view returns (address sender) {
         sender = libsign.verify(secret, v, r, s);
-        require(
-            sender == signatory,
-            "access denied, you are not the signatory of this contract"
-        );
+        require(sender == signatory, "access denied, you are not the signatory of this contract");
     }
 }
 
@@ -120,14 +114,27 @@ pragma solidity ^0.6.12;
 
 interface TokenErc20 {
     function name() external view returns (string memory);
+
     function symbol() external view returns (string memory);
+
     function decimals() external view returns (uint8);
+
     function totalSupply() external view returns (uint256);
+
     function balanceOf(address _owner) external view returns (uint256 balance);
+
     function transfer(address _to, uint256 _value) external returns (bool success);
-    function transferFrom(address _from, address _to, uint256 _value) external returns (bool success);
+
+    function transferFrom(
+        address _from,
+        address _to,
+        uint256 _value
+    ) external returns (bool success);
+
     function approve(address _spender, uint256 _value) external returns (bool success);
+
     function allowance(address _owner, address _spender) external view returns (uint256 remaining);
+
     event Transfer(address indexed _from, address indexed _to, uint256 _value);
     event Approval(address indexed _owner, address indexed _spender, uint256 _value);
 }
@@ -138,9 +145,8 @@ interface TokenErc20 {
 
 pragma solidity ^0.6.12;
 
-
 interface VotingIfc {
-    function tokenErc20() external view returns(TokenErc20);
+    function tokenErc20() external view returns (TokenErc20);
 }
 
 // File: contracts/LibVoting.sol
@@ -148,8 +154,6 @@ interface VotingIfc {
 // SPDX-License-Identifier: MIT
 
 pragma solidity ^0.6.12;
-
-
 
 library LibVoting {
     struct Data {
@@ -200,10 +204,7 @@ library LibVoting {
         require(starttime != 0, "startime is not defined");
         require(endtime > starttime, "endttime is not after starttime");
         require(starttime >= now, "start time must be in the future");
-        require(
-            data.starttime == 0 && data.endtime == 0,
-            "time is already configured"
-        );
+        require(data.starttime == 0 && data.endtime == 0, "time is already configured");
         data.starttime = starttime;
         data.endtime = endtime;
     }
@@ -279,11 +280,6 @@ library LibVoting {
 
 pragma solidity ^0.6.12;
 
-
-
-
-
-
 contract Voting is VotingIfc, owned, signed {
     using LibVoting for LibVoting.Data;
     LibVoting.Data private data;
@@ -314,11 +310,7 @@ contract Voting is VotingIfc, owned, signed {
         uint8 v,
         bytes32 r,
         bytes32 s
-    )
-        public
-        restrict
-        issigned(abi.encode(starttime, endtime, address(this)), v, r, s)
-    {
+    ) public restrict isSigned(abi.encode(starttime, endtime, address(this)), v, r, s) {
         data.setVotingTime(starttime, endtime);
     }
 
@@ -358,7 +350,7 @@ contract Voting is VotingIfc, owned, signed {
         return data.standDown;
     }
 
-    function tokenErc20() public override view returns (TokenErc20) {
+    function tokenErc20() public view override returns (TokenErc20) {
         return data.tokenErc20;
     }
 

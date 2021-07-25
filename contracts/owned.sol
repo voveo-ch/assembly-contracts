@@ -2,7 +2,7 @@
 
 pragma solidity ^0.6.12;
 
-contract owned {
+contract Owned {
     address payable internal owner;
     event feePaid(address to, uint amount);
     // creator is owner

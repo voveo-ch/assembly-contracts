@@ -2,8 +2,8 @@
 
 pragma solidity ^0.6.12;
 
-import "./libsign.sol";
-import "./TokenErc20Ifc.sol";
+import "./LibSign.sol";
+import "../interfaces/ITokenERC20.sol";
 
 library LibVoting {
     struct Data {
@@ -15,7 +15,7 @@ library LibVoting {
         uint256 nay;
         uint256 abstain;
         uint256 standDown;
-        TokenErc20 tokenErc20;
+        ITokenERC20 tokenErc20;
         mapping(address => bool) voters;
     }
 
@@ -30,7 +30,7 @@ library LibVoting {
         Data storage data,
         string memory title,
         string memory proposal,
-        TokenErc20 token
+        ITokenERC20 token
     ) public {
         require(bytes(title).length > 0, "voting title is required");
         require(bytes(proposal).length > 0, "voting proposal is required");
@@ -70,7 +70,7 @@ library LibVoting {
         bytes32 r,
         bytes32 s
     ) public returns (uint256 shares) {
-        address shareholder = libsign.verify(abi.encode(vote, a), v, r, s);
+        address shareholder = LibSign.verify(abi.encode(vote, a), v, r, s);
         require(!data.voters[shareholder], "already voted");
         shares = data.tokenErc20.balanceOf(shareholder);
         require(shares > 0, "not a validated shareholder");

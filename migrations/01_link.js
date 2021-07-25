@@ -1,12 +1,12 @@
-var libsign = artifacts.require("libsign");
-var LibVoting = artifacts.require("LibVoting");
-var LibAssembly = artifacts.require("LibAssembly");
+var LibSign = artifacts.require("./libraries/LibSign");
+var LibVoting = artifacts.require("./libraries/LibVoting");
+var LibAssembly = artifacts.require("./libraries/LibAssembly");
 
-module.exports = async function (deployer, network, accounts) {
-  await deployer.deploy(libsign);
-  await deployer.link(libsign, LibVoting);
+module.exports = async function (deployer) {
+  await deployer.deploy(LibSign);
+  await deployer.link(LibSign, LibVoting);
   await deployer.deploy(LibVoting);
-  await deployer.link(libsign, LibAssembly);
+  await deployer.link(LibSign, LibAssembly);
   await deployer.link(LibVoting, LibAssembly);
   await deployer.deploy(LibAssembly);
 };

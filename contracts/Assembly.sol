@@ -2,18 +2,15 @@
 
 pragma solidity ^0.6.12;
 
-import "./owned.sol";
-import "./signed.sol";
-import "./LibAssembly.sol";
+import "./Owned.sol";
+import "./Signed.sol";
+import "./libraries/LibAssembly.sol";
 
-contract Assembly is owned, signed {
+contract Assembly is Owned, Signed {
     using LibAssembly for LibAssembly.Data;
     LibAssembly.Data private data;
 
-    constructor(
-        string memory _identifier,
-        address _signatory
-    ) public signed(_signatory) {
+    constructor(string memory _identifier, address _signatory) public Signed(_signatory) {
         data.construct(_identifier);
     }
 
@@ -70,11 +67,7 @@ contract Assembly is owned, signed {
         uint8 v,
         bytes32 r,
         bytes32 s
-    )
-        public
-        restrict
-        issigned(abi.encode(_shareholder, _shares, address(this)), v, r, s)
-    {
+    ) public restrict isSigned(abi.encode(_shareholder, _shares, address(this)), v, r, s) {
         data.setShareholder(_shareholder, _shares);
     }
 
@@ -84,12 +77,8 @@ contract Assembly is owned, signed {
         uint8 v,
         bytes32 r,
         bytes32 s
-    )
-        public
-        restrict
-        issigned(abi.encode(_shareholders, _shares, address(this)), v, r, s)
-    {
-        data.setShareholders(_shareholders, _shares); 
+    ) public restrict isSigned(abi.encode(_shareholders, _shares, address(this)), v, r, s) {
+        data.setShareholders(_shareholders, _shares);
     }
 
     event votingCreated(address);
@@ -100,11 +89,7 @@ contract Assembly is owned, signed {
         uint8 v,
         bytes32 r,
         bytes32 s
-    )
-        public
-        restrict
-        issigned(abi.encode(title, proposal, address(this)), v, r, s)
-    {
+    ) public restrict isSigned(abi.encode(title, proposal, address(this)), v, r, s) {
         emit votingCreated(data.newVoting(title, proposal, signatory, owner));
     }
 
@@ -112,7 +97,7 @@ contract Assembly is owned, signed {
         uint8 v,
         bytes32 r,
         bytes32 s
-    ) public restrict issigned(abi.encode(address(this)), v, r, s) {
+    ) public restrict isSigned(abi.encode(address(this)), v, r, s) {
         data.lock();
     }
 }
