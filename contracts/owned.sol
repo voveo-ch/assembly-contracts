@@ -9,6 +9,7 @@ contract Owned {
     constructor() public {
         owner = msg.sender;
     }
+    
     // only owner is allowed to call restricted function
     modifier restrict {
         require(msg.sender==owner, "access denied, you are not the contract owner");
