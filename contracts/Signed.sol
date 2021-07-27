@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.6.12;
+pragma solidity ^0.8.6;
 
 import "./libraries/LibSign.sol";
 
@@ -18,7 +18,7 @@ contract Signed {
         _;
     }
 
-    constructor(address _signatory) internal {
+    constructor(address _signatory) {
         signatory = _signatory;
     }
 

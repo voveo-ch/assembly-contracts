@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.6.12;
+pragma solidity ^0.8.6;
 
 import "./Owned.sol";
 import "./Signed.sol";
@@ -10,7 +10,7 @@ contract Assembly is Owned, Signed {
     using LibAssembly for LibAssembly.Data;
     LibAssembly.Data private data;
 
-    constructor(string memory _identifier, address _signatory) public Signed(_signatory) {
+    constructor(string memory _identifier, address _signatory) Signed(_signatory) {
         data.construct(_identifier);
     }
 

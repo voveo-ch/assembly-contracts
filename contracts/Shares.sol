@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.6.12;
+pragma solidity ^0.8.6;
 
 import "./interfaces/ITokenERC20.sol";
 import "./Owned.sol";
@@ -39,15 +39,15 @@ contract Shares is ITokenERC20, Owned {
         locked = true;
     }
 
-    function name() override public view returns (string memory) {
+    function name() override public pure returns (string memory) {
         return "Shareholder Management";
     }
 
-    function symbol() override public view returns (string memory) {
+    function symbol() override public pure returns (string memory) {
         return "$h";
     }
 
-    function decimals() override public view returns (uint8) {
+    function decimals() override public  pure returns (uint8) {
         return 0;
     }
 
@@ -64,7 +64,7 @@ contract Shares is ITokenERC20, Owned {
         return shareholders[shareholder];
     }
 
-    function transfer(address, uint256) override public returns (bool success) {
+    function transfer(address, uint256) override public pure returns (bool success) {
         return false;
     }
 
@@ -72,18 +72,18 @@ contract Shares is ITokenERC20, Owned {
         address,
         address,
         uint256
-    ) override public returns (bool success) {
+    ) override public pure returns (bool success) {
         return false;
     }
 
-    function approve(address, uint256) override public returns (bool success) {
+    function approve(address, uint256) override public pure returns (bool success) {
         return false;
     }
 
     function allowance(address, address)
         public
         override
-        view
+        pure
         returns (uint256 remaining)
     {
         return 0;

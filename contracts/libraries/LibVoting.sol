@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.6.12;
+pragma solidity ^0.8.6;
 
 import "./LibSign.sol";
 import "../interfaces/ITokenERC20.sol";
@@ -47,13 +47,13 @@ library LibVoting {
         uint256 endtime
     ) public {
         if (starttime == 0 && endtime > 0) {
-            starttime = now;
+            starttime = block.timestamp;
             endtime += starttime;
         }
         require(endtime != 0, "endttime is not defined");
         require(starttime != 0, "startime is not defined");
         require(endtime > starttime, "endttime is not after starttime");
-        require(starttime >= now, "start time must be in the future");
+        require(starttime >= block.timestamp, "start time must be in the future");
         require(
             data.starttime == 0 && data.endtime == 0,
             "time is already configured"
