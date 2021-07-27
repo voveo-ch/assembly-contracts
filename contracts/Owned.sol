@@ -1,29 +1,30 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.6.12;
+pragma solidity ^0.8.6;
 
 contract Owned {
     address payable internal owner;
-    event feePaid(address to, uint amount);
+    event feePaid(address to, uint256 amount);
+
     // creator is owner
-    constructor() public {
-        owner = msg.sender;
+    constructor() {
+        owner = payable(msg.sender);
     }
-    
+
     // only owner is allowed to call restricted function
     modifier restrict {
-        require(msg.sender==owner, "access denied, you are not the contract owner");
+        require(msg.sender == owner, "access denied, you are not the contract owner");
         _;
     }
     // requires a fee for the owner
-    modifier fee(uint amount) {
-        require(msg.value>=amount, "not enough payment for the fee");
+    modifier fee(uint256 amount) {
+        require(msg.value >= amount, "not enough payment for the fee");
         _;
         owner.transfer(amount);
         emit feePaid(owner, amount);
     }
 
-    function getOwner() view public returns (address payable) {
+    function getOwner() public view returns (address payable) {
         return owner;
     }
 
@@ -36,5 +37,4 @@ contract Owned {
     function withdraw() public restrict {
         owner.transfer(address(this).balance);
     }
-
 }

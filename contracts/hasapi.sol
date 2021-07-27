@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.6.12;
+pragma solidity ^0.8.6;
 
 contract hasapi {
     address internal api;
@@ -10,7 +10,7 @@ contract hasapi {
         _;
     }
 
-    constructor(address _api) internal {
+    constructor(address _api) {
         api = _api;
     }
 }

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.6.12;
+pragma solidity ^0.8.6;
 
 import "./Owned.sol";
 import "./Signed.sol";
@@ -24,22 +24,22 @@ contract Voting is IVoting, Owned, Signed {
     }
 
     constructor(
-        string memory title,
-        string memory proposal,
-        ITokenERC20 token,
+        string memory _title,
+        string memory _proposal,
+        ITokenERC20 _token,
         address _signatory
-    ) public Signed(_signatory) {
-        data.construct(title, proposal, token);
+    ) Signed(_signatory) {
+        data.construct(_title, _proposal, _token);
     }
 
     function setVotingTime(
-        uint256 starttime,
-        uint256 endtime,
+        uint256 _starttime,
+        uint256 _endtime,
         uint8 v,
         bytes32 r,
         bytes32 s
-    ) public restrict isSigned(abi.encode(starttime, endtime, address(this)), v, r, s) {
-        data.setVotingTime(starttime, endtime);
+    ) public restrict isSigned(abi.encode(_starttime, _endtime, address(this)), v, r, s) {
+        data.setVotingTime(_starttime, _endtime);
     }
 
     function title() public view returns (string memory) {
