@@ -2,9 +2,9 @@
 
 pragma solidity ^0.6.12;
 
-import "./libsign.sol";
-import "./Shares.sol";
-import "./Voting.sol";
+import "./LibSign.sol";
+import "../Shares.sol";
+import "../Voting.sol";
 
 library LibAssembly {
     struct Data {
@@ -34,7 +34,7 @@ library LibAssembly {
         bytes32 r,
         bytes32 s
     ) public {
-        address shareholder = libsign.verify(abi.encode(secret, a), v, r, s);
+        address shareholder = LibSign.verify(abi.encode(secret, a), v, r, s);
         require(
             data.registrations[secret] == address(0x0),
             "secret has already been used"

@@ -2,13 +2,14 @@
 
 pragma solidity ^0.6.12;
 
-contract owned {
+contract Owned {
     address payable internal owner;
     event feePaid(address to, uint amount);
     // creator is owner
     constructor() public {
         owner = msg.sender;
     }
+    
     // only owner is allowed to call restricted function
     modifier restrict {
         require(msg.sender==owner, "access denied, you are not the contract owner");

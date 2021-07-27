@@ -2,13 +2,13 @@
 
 pragma solidity ^0.6.12;
 
-import "./libsign.sol";
+import "./libraries/LibSign.sol";
 
-contract signed {
+contract Signed {
     address public signatory;
 
     // signatory has signed message
-    modifier issigned(
+    modifier isSigned(
         bytes memory secret,
         uint8 v,
         bytes32 r,
@@ -28,7 +28,7 @@ contract signed {
         bytes32 r,
         bytes32 s
     ) internal pure returns (address sender) {
-        sender = libsign.verify(secret, v, r, s);
+        sender = LibSign.verify(secret, v, r, s);
     }
 
     // signatory has signed message
@@ -38,7 +38,7 @@ contract signed {
         bytes32 r,
         bytes32 s
     ) internal view returns (address sender) {
-        sender = libsign.verify(secret, v, r, s);
+        sender = LibSign.verify(secret, v, r, s);
         require(
             sender == signatory,
             "access denied, you are not the signatory of this contract"

@@ -2,7 +2,7 @@
 
 pragma solidity ^0.6.12;
 
-library libsign {
+library LibSign {
     // verify sender of a signed message
     function verify(
         bytes memory secret,

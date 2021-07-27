@@ -2,10 +2,10 @@
 
 pragma solidity ^0.6.12;
 
-import "./TokenErc20Ifc.sol";
-import "./owned.sol";
+import "./interfaces/ITokenERC20.sol";
+import "./Owned.sol";
 
-contract Shares is TokenErc20, owned {
+contract Shares is ITokenERC20, Owned {
     mapping(address => uint256) shareholders;
     uint256 total = 0;
     bool public locked = false; // lock before assembly starts
