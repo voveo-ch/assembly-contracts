@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "@babel/core": "^7.13.13",
+    "@babel/core": "^7.14.8",
     "babel": "^6.23.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-register": "^6.26.0",
@@ -20,7 +20,7 @@
     "babel-register": "^6.26.0",
     "dotenv": "^6.0.0",
     "solc": "^0.8.6",
-    "swagger-client": "^3.13.1",
+    "swagger-client": "^3.13.7",
     "truffle": "5.2.6",
     "web3": "1.2.8"
   },
@@ -31,6 +31,7 @@
     "test-assembly": "npm run build && npx truffle test --config truffle-config.js ./test/AssemblyTest.js",
     "test": "npm run build && npx truffle test --config truffle-config.js ./test/test.js",
     "ganache": "npx ganache-cli -l 10000000 -d 'torch almost feed brother seat earth scorpion panther nuclear interest toy guide'",
+    "ganache-persist": "npx ganache-cli -l 10000000 -d 'torch almost feed brother seat earth scorpion panther nuclear interest toy guide' --db ${HOME}/tmp/ganache/db",
     "migrate-goerli": "npx truffle migrate --reset --network goerli",
     "migrate-teams": "npx truffle migrate --reset --network teams",
     "migrate-local": "npx truffle migrate --reset --network development",
