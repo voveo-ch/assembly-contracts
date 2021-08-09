@@ -14,7 +14,7 @@ contract Signed {
         bytes32 r,
         bytes32 s
     ) {
-        // verified(secret, v, r, s);
+        verified(secret, v, r, s);
         _;
     }
 

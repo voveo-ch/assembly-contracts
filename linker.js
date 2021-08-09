@@ -32,6 +32,7 @@ module.exports = async (
   );
   var assemblyLinkedBytecode = linker.linkBytecode(AssemblyArtifact.bytecode, {
     LibAssembly: LibAssemblyAddress,
+    LibSign : LibSignAddress,
   });
   AssemblyArtifact.bytecode = assemblyLinkedBytecode;
   fs.writeFile(
