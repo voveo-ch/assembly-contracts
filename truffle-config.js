@@ -114,35 +114,6 @@ module.exports = {
     // production: true    // Treats this network as if it was a public net. (default: false)
     // }
 
-    // teams: {
-    //   provider: function () {
-    //     return new HDWalletProvider(
-    //       teamsMnemonic,
-    //       "https://sandbox.truffleteams.com/01b581c6-0ffe-46ce-9dc7-d4d76823077b",
-    //       0,
-    //       10,
-    //       false
-    //     );
-    //   },
-    //   network_id: 1605810390116,
-    // },
-
-    teams: {
-      provider: () => {
-        const privatekey = fs
-          .readFileSync(`${path.dirname(__filename)}/.secret.teams`)
-          .toString();
-        return new HDWalletProvider(
-          privatekey,
-          "https://sandbox.truffleteams.com/01b581c6-0ffe-46ce-9dc7-d4d76823077b"
-        );
-      },
-      network_id: 1605810390116,
-      gas: 5500000,
-      confirmations: 2,
-      timeoutBlocks: 200,
-      skipDryRun: true,
-    },
   },
 
   // Set default mocha options here, use special reporters etc.
