@@ -8,16 +8,18 @@ var linker = require("solc/linker");
 const path = require("path");
 const fs = require("fs");
 
-const AssemblyFilePath = "/artifacts/Assembly.json";
-const VotingFilePath = "/artifacts/Voting.json";
-const SignedFilePath = "/artifacts/Signed.json";
 
 module.exports = async (
   LibVotingAddress,
   LibAssemblyAddress,
-  LibSignAddress
+  LibSignAddress,
+  network
 ) => {
   console.log("Starting the linking process");
+  const AssemblyFilePath = `/artifacts/${network}/Assembly.json`;
+  const VotingFilePath = `/artifacts/${network}/Voting.json`;
+  const SignedFilePath = `/artifacts/${network}/Signed.json`;
+
   var votingLinkedBytecode = linker.linkBytecode(VotingArtifact.bytecode, {
     LibVoting: LibVotingAddress,
   });
@@ -31,8 +33,7 @@ module.exports = async (
     }
   );
   var assemblyLinkedBytecode = linker.linkBytecode(AssemblyArtifact.bytecode, {
-    LibAssembly: LibAssemblyAddress,
-    LibSign : LibSignAddress,
+    LibAssembly: LibAssemblyAddress
   });
   AssemblyArtifact.bytecode = assemblyLinkedBytecode;
   fs.writeFile(

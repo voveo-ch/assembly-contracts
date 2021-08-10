@@ -63,8 +63,10 @@ contract("Assembly", (accounts) => {
     it("Should revert when vote with invalid signatur", async () => {
       const title = "Test title";
       const proposal = "Test Proposal";
-      const privateKey2 =
-        "0xa36567a0637d05a4352187dd536c9d50160e80f72919a3fc8c21f0a4d4551788";
+      // const privateKey2 =
+      // "0xa36567a0637d05a4352187dd536c9d50160e80f72919a3fc8c21f0a4d4551788";
+      const account2 = web3.eth.accounts.create(web3.utils.randomHex(32));
+      const privateKey2 = account2.privateKey;
       const inputs = ["string", "string", "address"];
       const args = [title, proposal, assemblyContract.address];
 

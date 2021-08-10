@@ -21,6 +21,7 @@ require("babel-register");
 require("@babel/polyfill");
 
 const HDWalletProvider = require("@truffle/hdwallet-provider");
+const mnemonic = "" // add your metamask mnemonics
 
 const fs = require("fs");
 const path = require("path");
@@ -58,6 +59,33 @@ module.exports = {
     // },
     // Useful for deploying to a public network.
     // NB: It's important to wrap the provider as a function.
+    xdai: {
+      provider: () =>
+        new HDWalletProvider({
+          mnemonic: {
+            phrase: mnemonic
+          },
+          providerOrUrl: "https://dai.poa.network"
+        }),
+      gas: 500000,
+      gasPrice: 1000000000,
+      network_id: 100
+    },
+
+    rinkeby: {
+      provider: () =>
+        new HDWalletProvider({
+          mnemonic: {
+            phrase: mnemonic
+          },
+          providerOrUrl: "https://rinkeby.infura.io/v3/", // add infura api key
+          numberOfAddresses: 1,
+          shareNonce: true
+        }),
+      gasPrice: 25000000000,
+      network_id: 4
+    },
+
     development: {
       host: "127.0.0.1",
       port: 8545,
