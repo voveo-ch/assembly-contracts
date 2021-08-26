@@ -4,7 +4,7 @@ var LibSign = artifacts.require("./libraries/LibSign");
 
 const link = require("../linker.js");
 
-module.exports = async function (deployer) {
+module.exports = async function (deployer, network) {
   var LibVotingInstance = await LibVoting.deployed();
   var LibVotingAddress = await LibVotingInstance.address;
   var LibAssemblyInstance = await LibAssembly.deployed();
@@ -13,6 +13,6 @@ module.exports = async function (deployer) {
   var LibSignAddress = await LibSignInstance.address;
 
   console.log("Staring the Linking");
-  await link(LibVotingAddress, LibAssemblyAddress, LibSignAddress);
+  await link(LibVotingAddress, LibAssemblyAddress, LibSignAddress, network);
   console.log("Linking has finished");
 };

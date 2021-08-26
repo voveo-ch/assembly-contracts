@@ -6,10 +6,10 @@ const path = require("path");
 
 console.log("Into the parser");
 
-module.exports = async (networkId) => {
+module.exports = async (network) => {
   console.log("Starting the Parser");
   fs.readdir(localpath, (err, files) => {
-    const artifactsDir = __dirname + "/artifacts";
+    const artifactsDir = __dirname + "/artifacts/" + `${network}`;
     if (!fs.existsSync(artifactsDir)) {
       fs.mkdirSync(artifactsDir);
     }
@@ -24,10 +24,10 @@ module.exports = async (networkId) => {
         const bytecode = fileContent.bytecode;
 
         fs.writeFile(
-            `${artifactsDir}/${contractName}.json`,
-            `{ "bytecode" : "${bytecode}","abi" : ${JSON.stringify(abi)}}
+          `${artifactsDir}/${contractName}.json`,
+          `{ "bytecode" : "${bytecode}","abi" : ${JSON.stringify(abi)}}
             `,
-            (err)=>err?Console.warn("Error", err):-1
+          (err) => err ? Console.warn("Error", err) : -1
         );
       } catch (error) {
         Console.warn("Invalid");

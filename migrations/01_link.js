@@ -4,7 +4,7 @@ var LibAssembly = artifacts.require("./libraries/LibAssembly");
 
 const parser = require("../parser.js");
 
-module.exports = async function (deployer,network) {
+module.exports = async function (deployer, network) {
   await deployer.deploy(LibSign);
   await deployer.link(LibSign, LibVoting);
   await deployer.deploy(LibVoting);
@@ -14,13 +14,14 @@ module.exports = async function (deployer,network) {
 
   let networdId;
 
-  if(network === "development"){
+  if (network === "development") {
     networdId = "1337";
-  }else if(network === "goerli"){
+  } else if (network === "goerli") {
     networdId = "5";
   }
 
   console.log("Start parsing");
-  await parser();
+  console.log(network);
+  await parser(network);
   console.log("End parsing");
 };
